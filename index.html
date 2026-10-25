@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Together</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOmVkMjc4ZTQ4LTcxMDQtNGU0NC05NWFhLTBhM2I2OTBhODkwNQAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoohY6dMmu9gF40egdTn5k9QAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6M2FlNzg0NWYtNzk2Ny00M2IzLWFkODktN2Y2MmRmMzNkZDEwbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaHAFZwQj7asenC2RIToMkA4AAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIBoUWUfHyD6oaleDlPomHbUgnA2PpIQxreYEx0VBd+yDpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2hbhfWRDTOj9QRZuVkYRBRDAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggHyKuMwcdK0dlNhlpIBeI1ohLZ/tJVcksGGnQoRrEbGVkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTplZDI3OGU0OC03MTA0LTRlNDQtOTVhYS0wYTNiNjkwYTg5MDUvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDoxY2I2NWVlNi1iMjY1LTQ5YjQtYjVjYy0xNjcxZGQzODA0NGJyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggGhRZR8fIPqhqV4OU+iYdtSCcDY+khDGt5gTHRUF37IOiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIB/4HHDNSUnAul1Ln4DwCZ9ieT+nGXg9EkVXFM7k/YU2omN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYIG+a1mseu/UVVJmoXZL/0n3Zt5pdxm78P26mhxhL5NJDdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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">
+<meta name="theme-color" content="#395886">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Together">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+:root{--bg:#F0F3FA;--card:#fff;--soft:#D5DEEF;--tint:#B1C9EF;--blue:#628ECB;--deep:#395886;--on:#fff;--ink:#22385a;--mut:#667fa6;--bar:rgba(240,243,250,.85)}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1a2c;--card:#182741;--soft:#25385a;--tint:#35507c;--blue:#8AAEE0;--deep:#B1C9EF;--on:#0f1a2c;--ink:#F0F3FA;--mut:#8AAEE0;--bar:rgba(15,26,44,.85)}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2{margin:0}
+.m{color:var(--mut);font-size:13px}
+#app{max-width:560px;margin:auto;min-height:100vh}
+.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;padding:calc(env(safe-area-inset-top) + 14px) 20px 10px;background:var(--bar);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.top h1{font-size:32px;font-weight:800;letter-spacing:-.6px}
+.gear{border:0;background:var(--soft);width:38px;height:38px;border-radius:50%;font-size:18px}
+main{padding:6px 0 130px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:5;background:var(--bar);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--soft);padding-bottom:env(safe-area-inset-bottom)}
+nav div{display:flex;max-width:560px;margin:auto}
+nav button{flex:1;border:0;background:none;padding:8px 0 7px;font-size:11px;font-weight:600;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button span{font-size:22px;filter:grayscale(1);opacity:.7}
+nav button.on{color:var(--deep)}
+nav button.on span{filter:none;opacity:1}
+.fab{position:fixed;z-index:6;right:max(20px,calc(50% - 260px));bottom:calc(78px + env(safe-area-inset-bottom));width:56px;height:56px;border:0;border-radius:50%;background:var(--deep);color:var(--on);font-size:30px;line-height:1;box-shadow:0 8px 22px rgba(57,88,134,.4)}
+.gh{font-size:14px;font-weight:700;color:var(--mut);padding:16px 22px 8px}
+.c{display:flex;gap:12px;align-items:center;margin:0 16px 10px;padding:14px;border:0;border-radius:20px;background:var(--card);box-shadow:0 1px 3px rgba(57,88,134,.1);text-align:left}
+button.c{width:calc(100% - 32px)}
+.c.past{opacity:.55}
+.c.next{background:var(--deep);color:var(--on)}
+.c.next .m{color:inherit;opacity:.8}
+.c.next .bd{background:rgba(255,255,255,.2);color:inherit}
+.ic{flex:none;width:46px;height:46px;border-radius:15px;background:var(--soft);display:grid;place-items:center;font-size:23px}
+.c.next .ic{background:rgba(255,255,255,.2)}
+.tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.tx b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bd{flex:none;border:0;border-radius:99px;padding:5px 11px;background:var(--soft);color:var(--deep);font-size:12px;font-weight:700;white-space:nowrap}
+.bd.act{background:var(--deep);color:var(--on)}
+.x{border:0;background:none;color:var(--mut);font-size:16px;padding:4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:0;border-radius:99px;padding:8px 14px;background:var(--soft);color:var(--deep);font-size:14px;font-weight:600}
+.chip.on{background:var(--deep);color:var(--on)}
+.em{text-align:center;padding:60px 30px;color:var(--mut)}
+.em div{font-size:44px}
+.em b{display:block;color:var(--ink);margin-top:8px}
+.em p{margin:4px 0 0}
+.cal{margin:6px 16px;padding:12px;background:var(--card);border-radius:22px}
+.ch{display:flex;justify-content:space-between;align-items:center;padding:2px 6px 10px}
+.ch button{border:0;background:var(--soft);color:var(--deep);width:34px;height:34px;border-radius:50%;font-size:20px}
+.g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.wk{font-size:12px;font-weight:700;color:var(--mut);padding:4px 0}
+.d{position:relative;aspect-ratio:1;border:0;background:none;border-radius:14px;font-size:15px}
+.d.t{font-weight:800;color:var(--blue)}
+.d.s{background:var(--deep);color:var(--on)}
+.d i{position:absolute;bottom:6px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--blue)}
+.d.s i{background:var(--on)}
+.ib{padding:8px 16px 10px}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:8px 16px}
+.mi{position:relative;aspect-ratio:3/4;border:0;padding:0;border-radius:20px;overflow:hidden;background:var(--soft)}
+.mi img{width:100%;height:100%;object-fit:cover;display:block}
+.mi span{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;text-align:left;color:#fff;font-weight:700;font-size:14px;background:linear-gradient(transparent,rgba(34,56,90,.85))}
+.mi small{font-weight:500;opacity:.85}
+#ov{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center;background:rgba(34,56,90,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+#ov.o{opacity:1;pointer-events:auto}
+#sh{width:100%;max-width:560px;max-height:92vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding:10px 20px calc(26px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+#ov.o #sh{transform:none}
+#sh:before{content:"";display:block;width:40px;height:5px;margin:0 auto 14px;border-radius:3px;background:var(--tint)}
+#sh h2{font-size:24px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px}
+label{display:block;margin:14px 0 5px;font-size:13px;font-weight:700;color:var(--mut)}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--soft);border-radius:14px;background:var(--card);font-size:16px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:0}
+.r{display:flex;gap:10px}
+.r>*{flex:1;min-width:0}
+.pb,.sb{display:block;width:100%;margin-top:14px;padding:14px;border:0;border-radius:16px;font-size:16px;font-weight:700;background:var(--deep);color:var(--on)}
+.sb{background:var(--soft);color:var(--deep);margin-top:10px}
+.db{color:#c0392b}
+.pb:disabled{opacity:.5}
+.dh{text-align:center;padding:6px 0 10px}
+.dh .ic{margin:0 auto 8px;width:60px;height:60px;font-size:30px;border-radius:20px}
+#ph img{width:100%;border-radius:20px;display:block;margin:6px 0 10px}
+.kv{display:flex;gap:12px;padding:10px 2px;border-bottom:1px solid var(--soft);white-space:pre-wrap;overflow-wrap:anywhere}
+.kv span{flex:none;width:24px;text-align:center}
+.lg{min-height:100vh;display:grid;place-items:center;padding:24px}
+.lg form{width:100%;max-width:360px;text-align:center}
+.lg h1{font-size:38px;font-weight:800;letter-spacing:-.8px}
+.lg input{margin-top:10px}
+.logo{font-size:56px}
+.err{color:#c0392b;min-height:20px;font-size:14px;margin:8px 0 0}
+#to{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));z-index:30;transform:translate(-50%,20px);max-width:90%;padding:10px 18px;border-radius:99px;background:var(--deep);color:var(--on);font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.25s}
+#to.o{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="login" class="lg" hidden>
+  <form id="lf">
+    <div class="logo">💙</div>
+    <h1>Together</h1>
+    <p class="m">Just for the two of us</p>
+    <input name="e" type="email" required autocomplete="username" placeholder="Email">
+    <input name="p" type="password" required autocomplete="current-password" placeholder="Password">
+    <p id="le" class="err"></p>
+    <button class="pb">Sign in</button>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top"><h1 id="h"></h1><button class="gear" data-a="set" aria-label="Settings">⚙️</button></header>
+  <main id="main"></main>
+  <button class="fab" data-a="add" aria-label="Add">+</button>
+  <nav><div>
+    <button data-a="tab" data-id="t"><span>🕒</span>Timeline</button>
+    <button data-a="tab" data-id="c"><span>📅</span>Calendar</button>
+    <button data-a="tab" data-id="i"><span>💡</span>Ideas</button>
+    <button data-a="tab" data-id="m"><span>🖼️</span>Moments</button>
+  </div></nav>
+</div>
+
+<div id="ov"><div id="sh"></div></div>
+<input type="file" id="pf" accept="image/*" hidden>
+<div id="to"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ===== CONFIG: paste your own values ===== */
+const SB_URL='https://bwtczsxvvyilzoaemkcy.supabase.co', SB_KEY='sb_publishable_h77812kuq0eyV6ys74c5GQ_OSrpWVis', VAPID='BD5FZECfntsQXfsLrQxuxIFx_FDMBZ9wmptBjMAoUIqhn9aNMgYReeps56DdcFbIRo2yJIbNSNAnxXvTWaf3ikY';
+
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const CATS={dinner:['🍽️','Dinner'],movie:['🎬','Movie'],monthsary:['💙','Monthsary'],anniversary:['🥂','Anniversary'],trip:['✈️','Trip'],birthday:['🎂','Birthday'],surprise:['🎁','Surprise'],other:['✨','Other']};
+const S={tab:'t',cat:'all',dates:[],ideas:[],urls:{},ut:Date.now(),cid:null,uid:null,cur:null};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const ymd=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const P=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const diff=s=>Math.round((P(s)-P(ymd(new Date())))/864e5);
+const fd=s=>P(s).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+const ft=t=>{if(!t)return'';const[h,m]=t.split(':');return`${+h%12||12}:${m} ${+h<12?'AM':'PM'}`};
+const peso=n=>'₱'+Number(n).toLocaleString('en-PH',{maximumFractionDigits:2});
+const cd=s=>{const n=diff(s);return n===0?'Today':n===1?'Tomorrow':n>1?`in ${n} days`:n===-1?'Yesterday':`${-n} days ago`};
+const cmp=(a,b)=>a.date_on.localeCompare(b.date_on)||(a.time_at||'').localeCompare(b.time_at||'');
+const who=()=>localStorage.getItem('who')||null;
+const catOpts=sel=>Object.entries(CATS).map(([k,v])=>`<option value="${k}"${k===sel?' selected':''}>${v[0]} ${v[1]}</option>`).join('');
+const now=new Date();
+S.mo=new Date(now.getFullYear(),now.getMonth(),1);
+S.sel=ymd(now);
+
+let TT;
+function toast(m){const t=$('#to');t.textContent=m;t.classList.add('o');clearTimeout(TT);TT=setTimeout(()=>t.classList.remove('o'),2800)}
+const open=h=>{$('#sh').innerHTML=h;$('#ov').classList.add('o')};
+const close=()=>{$('#ov').classList.remove('o');S.cur=null};
+$('#ov').onclick=e=>{if(e.target.id==='ov')close()};
+const show=w=>{$('#login').hidden=w!=='login';$('#app').hidden=w!=='app'};
+
+/* ---------- data ---------- */
+async function load(){
+  const[a,b]=await Promise.all([
+    sb.from('dates').select('*').order('date_on'),
+    sb.from('ideas').select('*').eq('done',false).order('created_at',{ascending:false})
+  ]);
+  if(a.error||b.error){toast("Couldn't load. Check your connection.");return}
+  S.dates=a.data||[];S.ideas=b.data||[];render();
+}
+
+async function boot(){
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  if(SB_URL.startsWith('YOUR')){show('login');$('#le').textContent='Add your Supabase URL and key in index.html first.';return}
+  const{data:{session}}=await sb.auth.getSession();
+  if(!session)return show('login');
+  S.uid=session.user.id;
+  const{data:m}=await sb.from('couple_members').select('couple_id').limit(1).maybeSingle();
+  if(!m){await sb.auth.signOut();show('login');$('#le').textContent="This login isn't linked to your couple yet. Run the last block of the SQL setup.";return}
+  S.cid=m.couple_id;show('app');
+  await load();
+  sb.channel('live')
+    .on('postgres_changes',{event:'*',schema:'public',table:'dates'},load)
+    .on('postgres_changes',{event:'*',schema:'public',table:'ideas'},load)
+    .subscribe();
+  if(!who())settings();
+}
+
+$('#lf').onsubmit=async e=>{
+  e.preventDefault();const f=new FormData(e.target);$('#le').textContent='';
+  const{error}=await sb.auth.signInWithPassword({email:f.get('e').trim(),password:f.get('p')});
+  if(error)return $('#le').textContent=error.message;
+  boot();
+};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.cid)load()});
+
+/* ---------- views ---------- */
+function render(){
+  $('#h').textContent={t:'Timeline',c:'Calendar',i:'Ideas',m:'Moments'}[S.tab];
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.id===S.tab));
+  $('.fab').hidden=S.tab==='m';
+  $('#main').innerHTML={t:vT,c:vC,i:vI,m:vM}[S.tab]();
+  if(S.tab==='m')signed();
+}
+const empty=(t,s)=>`<div class="em"><div>💙</div><b>${t}</b><p>${s}</p></div>`;
+const card=(d,cls='')=>`<button class="c ${cls}" data-a="det" data-id="${d.id}"><span class="ic">${CATS[d.category][0]}</span><span class="tx"><b>${esc(d.title)}</b><small class="m">${fd(d.date_on)}${d.time_at?' at '+ft(d.time_at):''}</small>${d.place?`<small class="m">${esc(d.place)}</small>`:''}</span><span class="bd">${cd(d.date_on)}</span></button>`;
+const grp=s=>{const n=diff(s);return n===0?'Today':n<=7?'This week':P(s).toLocaleDateString('en-US',{month:'long',year:'numeric'})};
+
+function vT(){
+  const chips=`<div class="chips">${[['all','All'],...Object.entries(CATS).map(([k,v])=>[k,v[0]+' '+v[1]])].map(([k,l])=>`<button class="chip${S.cat===k?' on':''}" data-a="cat" data-id="${k}">${l}</button>`).join('')}</div>`;
+  const l=S.dates.filter(d=>S.cat==='all'||d.category===S.cat);
+  const up=l.filter(d=>diff(d.date_on)>=0).sort(cmp),past=l.filter(d=>diff(d.date_on)<0).sort((a,b)=>cmp(b,a));
+  if(!up.length&&!past.length)return chips+empty('No dates yet','Tap + to plan your first one.');
+  let h=chips,last='';
+  up.forEach((d,i)=>{const g=grp(d.date_on);if(g!==last){h+=`<div class="gh">${g}</div>`;last=g}h+=card(d,i===0?'next':'')});
+  if(past.length){h+='<div class="gh">Past</div>';past.forEach(d=>h+=card(d,'past'))}
+  return h;
+}
+
+function vC(){
+  const y=S.mo.getFullYear(),m=S.mo.getMonth(),first=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),td=ymd(new Date());
+  const has={};S.dates.forEach(d=>has[d.date_on]=1);
+  let g=['S','M','T','W','T','F','S'].map(x=>`<div class="wk">${x}</div>`).join('')+'<div></div>'.repeat(first);
+  for(let i=1;i<=n;i++){const s=`${y}-${pad(m+1)}-${pad(i)}`;g+=`<button class="d${s===td?' t':''}${s===S.sel?' s':''}" data-a="day" data-id="${s}">${i}${has[s]?'<i></i>':''}</button>`}
+  const day=S.dates.filter(d=>d.date_on===S.sel).sort(cmp);
+  return `<div class="cal"><div class="ch"><button data-a="mo" data-id="-1" aria-label="Previous month">‹</button><b>${S.mo.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</b><button data-a="mo" data-id="1" aria-label="Next month">›</button></div><div class="g">${g}</div></div>`
+   +`<div class="gh">${fd(S.sel)}</div>`
+   +(day.length?day.map(d=>card(d,diff(d.date_on)<0?'past':'')).join(''):'<p class="m" style="padding:0 22px">Nothing planned. Tap + to add a date.</p>');
+}
+
+function vI(){
+  let h='<div class="ib"><button class="pb" style="margin-top:6px" data-a="sur">🎲 Surprise us</button></div>';
+  if(!S.ideas.length)return h+empty('No ideas yet','Tap + to save places and things you want to try together.');
+  S.ideas.forEach(i=>{
+    const sub=[i.place?esc(i.place):'',i.est_cost!=null?peso(i.est_cost):''].filter(Boolean).join(' · ')||CATS[i.category][1];
+    h+=`<div class="c"><span class="ic">${CATS[i.category][0]}</span><span class="tx"><b>${esc(i.title)}</b><small class="m">${sub}</small></span><button class="bd act" data-a="sched" data-id="${i.id}">Schedule</button><button class="x" data-a="idel" data-id="${i.id}" aria-label="Delete idea">✕</button></div>`;
+  });
+  return h;
+}
+
+function vM(){
+  const l=S.dates.filter(d=>d.photo_path).sort((a,b)=>b.date_on.localeCompare(a.date_on));
+  if(!l.length)return empty('No moments yet','Open a date and add its best photo.');
+  return `<div class="mg">${l.map(d=>`<button class="mi" data-a="det" data-id="${d.id}">${S.urls[d.photo_path]?`<img src="${S.urls[d.photo_path]}" alt="${esc(d.title)}">`:''}<span>${esc(d.title)}<br><small>${fd(d.date_on)}</small></span></button>`).join('')}</div>`;
+}
+
+/* ---------- photos ---------- */
+const stale=()=>{if(Date.now()-S.ut>3e6){S.urls={};S.ut=Date.now()}};
+async function signed(){
+  stale();
+  const need=[...new Set(S.dates.map(d=>d.photo_path).filter(p=>p&&!S.urls[p]))];
+  if(!need.length)return;
+  const{data}=await sb.storage.from('moments').createSignedUrls(need,3600);
+  let add=0;(data||[]).forEach(r=>{if(r.signedUrl){S.urls[r.path]=r.signedUrl;add++}});
+  if(add&&S.tab==='m')render();
+}
+async function url(p){
+  stale();
+  if(!S.urls[p]){const{data}=await sb.storage.from('moments').createSignedUrl(p,3600);if(data)S.urls[p]=data.signedUrl}
+  return S.urls[p];
+}
+const shrink=f=>new Promise((ok,no)=>{
+  const i=new Image(),u=URL.createObjectURL(f);
+  i.onload=()=>{URL.revokeObjectURL(u);const k=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement('canvas');
+    c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);
+    c.toBlob(b=>b?ok(b):no(Error('Could not compress image')),'image/jpeg',.82)};
+  i.onerror=()=>no(Error('Unsupported image'));i.src=u;
+});
+$('#pf').onchange=async e=>{
+  const f=e.target.files[0];e.target.value='';
+  const d=S.dates.find(x=>x.id===S.cur);if(!f||!d)return;
+  try{
+    toast('Uploading photo…');
+    const path=`${S.cid}/${d.id}.jpg`;
+    const up=await sb.storage.from('moments').upload(path,await shrink(f),{contentType:'image/jpeg',upsert:true});
+    if(up.error)throw up.error;
+    const u=await sb.from('dates').update({photo_path:path}).eq('id',d.id);
+    if(u.error)throw u.error;
+    delete S.urls[path];await load();det(d.id);toast('Photo saved');
+  }catch(x){toast('Upload failed: '+x.message)}
+};
+
+/* ---------- sheets ---------- */
+async function det(id){
+  const d=S.dates.find(x=>x.id===id);if(!d)return;
+  S.cur=id;
+  open(`<div class="dh"><div class="ic">${CATS[d.category][0]}</div><h2>${esc(d.title)}</h2><p class="m">${CATS[d.category][1]}${d.recurrence!=='none'?', repeats '+d.recurrence:''}</p></div>
+  <div id="ph"></div>
+  <div class="kv"><span>📅</span><div>${fd(d.date_on)}, <b>${cd(d.date_on)}</b></div></div>
+  ${d.time_at?`<div class="kv"><span>🕒</span><div>${ft(d.time_at)}</div></div>`:''}
+  ${d.place?`<div class="kv"><span>📍</span><div>${esc(d.place)}</div></div>`:''}
+  ${d.budget!=null?`<div class="kv"><span>💰</span><div>${peso(d.budget)}</div></div>`:''}
+  ${d.notes?`<div class="kv"><span>📝</span><div>${esc(d.notes)}</div></div>`:''}
+  ${d.added_by?`<p class="m">Added by ${esc(d.added_by)}</p>`:''}
+  <button class="sb" data-a="photo">${d.photo_path?'Replace photo':'📷 Add best photo'}</button>
+  ${d.photo_path?'<button class="sb" data-a="rmph">Remove photo</button>':''}
+  <div class="r"><button class="sb" data-a="edit">Edit</button><button class="sb db" data-a="del">Delete</button></div>`);
+  if(d.photo_path){const u=await url(d.photo_path);if(u&&S.cur===id&&$('#ph'))$('#ph').innerHTML=`<img src="${u}" alt="">`}
+}
+
+function form(d={}){
+  open(`<h2>${d.id?'Edit date':'New date'}</h2>
+  <form id="df">
+  <label>Title</label><input name="title" required maxlength="80" placeholder="Dinner at our spot" value="${esc(d.title)}">
+  <div class="r"><div><label>Date</label><input type="date" name="date_on" required value="${d.date_on||''}"></div>
+  <div><label>Time</label><input type="time" name="time_at" value="${(d.time_at||'').slice(0,5)}"></div></div>
+  <label>Category</label><select name="category">${catOpts(d.category||'dinner')}</select>
+  <label>Place</label><input name="place" maxlength="80" value="${esc(d.place)}">
+  <div class="r"><div><label>Budget (₱)</label><input type="number" name="budget" min="0" step="0.01" inputmode="decimal" value="${d.budget??''}"></div>
+  <div><label>Repeats</label><select name="recurrence">${[['none','Never'],['monthly','Monthly'],['yearly','Yearly']].map(([k,l])=>`<option value="${k}"${k===(d.recurrence||'none')?' selected':''}>${l}</option>`).join('')}</select></div></div>
+  <label>Notes</label><textarea name="notes" rows="3" maxlength="500">${esc(d.notes)}</textarea>
+  <button class="pb">Save date</button></form>`);
+  $('#df').onsubmit=async e=>{
+    e.preventDefault();const r=Object.fromEntries(new FormData(e.target)),btn=$('#df .pb');
+    const row={title:r.title.trim(),date_on:r.date_on,time_at:r.time_at||null,category:r.category,place:r.place.trim()||null,budget:r.budget===''?null:+r.budget,recurrence:r.recurrence,notes:r.notes.trim()||null};
+    if(!row.title)return;
+    btn.disabled=true;
+    const{error}=d.id?await sb.from('dates').update(row).eq('id',d.id):await sb.from('dates').insert({...row,couple_id:S.cid,added_by:who()});
+    if(error){btn.disabled=false;return toast(error.message)}
+    if(d.idea)await sb.from('ideas').update({done:true}).eq('id',d.idea);
+    close();await load();toast('Date saved');
+  };
+}
+
+function iform(){
+  open(`<h2>New idea</h2><form id="if">
+  <label>Idea</label><input name="title" required maxlength="80" placeholder="Try the new ramen place">
+  <label>Category</label><select name="category">${catOpts('dinner')}</select>
+  <label>Place</label><input name="place" maxlength="80">
+  <label>Estimated cost (₱)</label><input type="number" name="est_cost" min="0" step="0.01" inputmode="decimal">
+  <button class="pb">Save idea</button></form>`);
+  $('#if').onsubmit=async e=>{
+    e.preventDefault();const r=Object.fromEntries(new FormData(e.target)),btn=$('#if .pb');
+    if(!r.title.trim())return;btn.disabled=true;
+    const{error}=await sb.from('ideas').insert({couple_id:S.cid,title:r.title.trim(),category:r.category,place:r.place.trim()||null,est_cost:r.est_cost===''?null:+r.est_cost,added_by:who()});
+    if(error){btn.disabled=false;return toast(error.message)}
+    close();await load();toast('Idea saved');
+  };
+}
+
+function sur(){
+  open(`<h2>🎲 Surprise us</h2><p class="m">Picks a random idea from your list.</p>
+  <div class="r"><div><label>Category</label><select id="sc"><option value="all">Any</option>${catOpts('')}</select></div>
+  <div><label>Max budget (₱)</label><input id="sm" type="number" min="0" inputmode="decimal" placeholder="Any"></div></div>
+  <div id="sr"></div><button class="pb" data-a="pick">Pick one</button>`);
+}
+function pick(){
+  const c=$('#sc').value,m=$('#sm').value;
+  const l=S.ideas.filter(i=>(c==='all'||i.category===c)&&(m===''||i.est_cost==null||i.est_cost<=+m));
+  if(!l.length){$('#sr').innerHTML='<p class="m" style="margin-top:14px">No ideas match. Try a different category or budget.</p>';return}
+  const i=l[Math.floor(Math.random()*l.length)];
+  $('#sr').innerHTML=`<div class="c" style="margin:16px 0 0"><span class="ic">${CATS[i.category][0]}</span><span class="tx"><b style="white-space:normal">${esc(i.title)}</b><small class="m">${[i.place?esc(i.place):'',i.est_cost!=null?peso(i.est_cost):''].filter(Boolean).join(' · ')||CATS[i.category][1]}</small></span></div><button class="sb" data-a="sched" data-id="${i.id}">Schedule it</button>`;
+}
+
+function settings(){
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const sa=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+  open(`<h2>Settings</h2>
+  <label>Your name (shown as “Added by”)</label><input id="nm" maxlength="30" value="${esc(who())}">
+  <button class="pb" data-a="savenm">Save name</button>
+  <label>Reminders on this phone</label>
+  <p class="m" style="margin:0">${ios&&!sa?'On iPhone: tap Share, then Add to Home Screen. Open Together from your Home Screen and turn reminders on there.':'You get a notice the day before and at 8:00 AM on the day.'}</p>
+  <button class="sb" data-a="push">🔔 Turn on reminders</button>
+  <button class="sb db" data-a="out">Sign out</button>`);
+}
+
+const b64=s=>{const r=atob((s+'='.repeat((4-s.length%4)%4)).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
+async function push(){
+  try{
+    if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return toast('Not supported here. On iPhone, add to Home Screen first.');
+    if(VAPID.startsWith('YOUR'))return toast('Add your VAPID public key in index.html');
+    const perm=await Notification.requestPermission();
+    if(perm!=='granted')return toast('Notifications are blocked in your phone settings');
+    const reg=await navigator.serviceWorker.ready;
+    const s=(await reg.pushManager.getSubscription())||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(VAPID)});
+    const j=s.toJSON();
+    const{error}=await sb.from('push_subscriptions').upsert({couple_id:S.cid,user_id:S.uid,endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,device_label:`${who()||''} ${navigator.platform}`.trim()},{onConflict:'endpoint'});
+    if(error)throw error;
+    toast('Reminders are on 🔔');
+  }catch(x){toast('Could not turn on: '+x.message)}
+}
+
+/* ---------- actions ---------- */
+const A={
+  tab:id=>{S.tab=id;render();scrollTo(0,0)},
+  cat:id=>{S.cat=id;render()},
+  day:id=>{S.sel=id;render()},
+  mo:id=>{S.mo=new Date(S.mo.getFullYear(),S.mo.getMonth()+(+id),1);render()},
+  det,
+  add:()=>S.tab==='i'?iform():form({date_on:S.tab==='c'?S.sel:ymd(new Date())}),
+  edit:()=>{const d=S.dates.find(x=>x.id===S.cur);if(d)form(d)},
+  photo:()=>$('#pf').click(),
+  rmph:async()=>{
+    const d=S.dates.find(x=>x.id===S.cur);if(!d||!confirm('Remove this photo?'))return;
+    await sb.storage.from('moments').remove([d.photo_path]);
+    const{error}=await sb.from('dates').update({photo_path:null}).eq('id',d.id);
+    if(error)return toast(error.message);
+    delete S.urls[d.photo_path];await load();det(d.id);
+  },
+  del:async()=>{
+    const d=S.dates.find(x=>x.id===S.cur);if(!d||!confirm('Delete this date?'))return;
+    if(d.photo_path)await sb.storage.from('moments').remove([d.photo_path]);
+    const{error}=await sb.from('dates').delete().eq('id',d.id);
+    if(error)return toast(error.message);
+    close();load();
+  },
+  sched:id=>{const i=S.ideas.find(x=>x.id===id);if(i)form({title:i.title,category:i.category,place:i.place,budget:i.est_cost,idea:i.id,date_on:ymd(new Date(Date.now()+864e5))})},
+  idel:async id=>{if(!confirm('Delete this idea?'))return;const{error}=await sb.from('ideas').delete().eq('id',id);if(error)return toast(error.message);load()},
+  sur,pick,push,
+  set:settings,
+  savenm:()=>{localStorage.setItem('who',$('#nm').value.trim());close();toast('Name saved')},
+  out:async()=>{await sb.auth.signOut();location.reload()}
+};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b.dataset.id)});
+
+boot();
+</script>
+</body>
+</html>
